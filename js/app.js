@@ -71,6 +71,8 @@ var pikePlace = {
 
   cookieCount = randomCustomer * 6.3,
 
+  var ulElement = document.getElementById('pikePlaceCookies');
+
   for(var i = 0; i < storetimes.length; i++) {
     var liElement = document.createElement('li'),
     liElement.textContent = `At ${storeTimes[i]}, ${cookieCount} cookies were sold.`;
@@ -128,7 +130,7 @@ var alkiStore = {
     var max= Math.floor(this.maxCust);
     return Math.floor(Math.random() * (max-min)) + min;    
   }
-  
+
 };
 
 // HTML as an object literam aka the DOM:

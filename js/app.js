@@ -32,26 +32,26 @@
 //   }
 // };
 
-var months = ['May', 'June', 'July', 'August', 'September'];
+// var months = ['May', 'June', 'July', 'August', 'September'];
 
-var twoThousandSeventeen = {
-  miles: [5, 32, 9, 80, 5],
+// var twoThousandSeventeen = {
+//   miles: [5, 32, 9, 80, 5],
 
-  render: function() {
-    var ulElement = document.getElementById('list2017');
+//   render: function() {
+//     var ulElement = document.getElementById('list2017');
 
-    for(var i = 0; i < this.miles.length; i++) {
-      
-      var liElement = document.createElement('li');
+//     for(var i = 0; i < this.miles.length; i++) {
 
-      liElement.textContent = `In ${months[i]}, I hiked ${this.miles[i]} miles.`;
+//       var liElement = document.createElement('li');
 
-      ulElement.appendChild(liElement);
-    }
-  }
-};
-twoThousandEighteen.render();
-twoThousandSeventeen.render();
+//       liElement.textContent = `In ${months[i]}, I hiked ${this.miles[i]} miles.`;
+
+//       ulElement.appendChild(liElement);
+//     }
+//   }
+// };
+// twoThousandEighteen.render();
+// twoThousandSeventeen.render();
 
 
 
@@ -59,20 +59,20 @@ var storetimes = [ '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2
 var cookieCount = 0;
 
 var pikePlace = {
-  minCust=23,
-  maxCust=65,
-  cookieCust = function() {
-    function randomCustomer(min, max) {
-      min= math.ceil(min);
-      max= math.floor(max);
-      return math.floor(math.random() * (max-min)) + min;
-    }
+  minCust: 23,
+  maxCust: 65,
+  // cookieCust = function() {
+  randomCustomer: function() {
+    var min= Math.ceil(this.minCust);
+    var max= Math.floor(this.maxCust);
+    return Math.floor(Math.random() * (max-min)) + min;
+  }
 
-    for(var i = 0; i < storetimes.length; i++ ) {
-        
-    }
+  for(var i = 0; i < storetimes.length; i++) {
+    (cookieCust, [i] );
+  }
     cookieCount = cookieCust * 6.3;
-}
+};
 
 
 // HTML as an object literam aka the DOM:

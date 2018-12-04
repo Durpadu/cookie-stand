@@ -56,24 +56,80 @@
 
 
 var storetimes = [ '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm' ];
-var cookieCount = 0;
+
+var cookieTotal = 0;
 
 var pikePlace = {
   minCust: 23,
   maxCust: 65,
-  // cookieCust = function() {
+
   randomCustomer: function() {
     var min= Math.ceil(this.minCust);
     var max= Math.floor(this.maxCust);
     return Math.floor(Math.random() * (max-min)) + min;
   }
 
+  cookieCount = randomCustomer * 6.3,
+
   for(var i = 0; i < storetimes.length; i++) {
-    (cookieCust, [i] );
+    var liElement = document.createElement('li'),
+    liElement.textContent = `At ${storeTimes[i]}, ${cookieCount} cookies were sold.`;
+    ulElement.appendChild(liElement);
   }
-    cookieCount = cookieCust * 6.3;
+   
+  cookieTotal++
 };
 
+var seaTac = {
+  minCust: 3,
+  maxCust: 24,
+
+  randomCustomer: function() {
+    var min= Math.ceil(this.minCust);
+    var max= Math.floor(this.maxCust);
+
+    return Math.floor(Math.random() * (max-min)) + min;    
+  }
+
+};
+
+var seaCenter = {
+  minCust: 11,
+  maxCust: 38,
+
+  randomCustomer: function() {
+    var min= Math.ceil(this.minCust);
+    var max= Math.floor(this.maxCust);
+    return Math.floor(Math.random() * (max-min)) + min;    
+  }
+
+};
+
+
+var capHill = {
+  minCust: 20,
+  maxCust: 38,
+
+  randomCustomer: function() {
+    var min= Math.ceil(this.minCust);
+    var max= Math.floor(this.maxCust);
+    return Math.floor(Math.random() * (max-min)) + min;    
+  }
+
+};
+
+
+var alkiStore = {
+  minCust: 2,
+  maxCust: 16,
+
+  randomCustomer: function() {
+    var min= Math.ceil(this.minCust);
+    var max= Math.floor(this.maxCust);
+    return Math.floor(Math.random() * (max-min)) + min;    
+  }
+  
+};
 
 // HTML as an object literam aka the DOM:
 // html {

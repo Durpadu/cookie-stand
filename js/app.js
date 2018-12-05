@@ -55,56 +55,70 @@
 
 
 
-var storetimes = [ '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm' ];
+// var storetimes = [ '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm' ];
 
-var cookieTotal = 0;
+// var storeLocation= [];
 
-var pikePlace = {
-  minCust: 23,
-  maxCust: 65,
-  aveCookieCust: 6.3,
+// var cookieTotal = 0;
 
-  randomCustomer: function() {
-    var min= Math.ceil(this.minCust);
-    var max= Math.floor(this.maxCust);
-    return Math.floor( Math.random() * (max-min) ) + min;
-  },
+function Store (minCust, maxCust, aveCust) {
 
-  hourCust: function() {
-    return Math.round( this.randomCustomer() * this.aveCookieCust) ;
-  }
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.aveCust = aveCust;
+  // Store.allStoreLocations.push(this);
 
-  cookieList: function() {
-    var ulElement = document.getElementById('pike-place-cookies');
-    var cookieTotal = 0;
-    for(var i = 0; i < storetimes.length; i++) {
-      var liElement = document.createElement('li'),
-      var randomNum = this.hourCust();
+}
 
-      cookieTotal += randomNum;
-
-      liElement.textContent = `At ${storeTimes[i]}, ${randomNum} cookies were sold.`;
-      ulElement.appendChild(liElement);
-    }
-
-    var totalEl = document.createElement('li');
-    totalEl.textContent =` Daily total: ${cookieTotal}`;
-    ulElement.appendChile(totalEl);
-
-  }
-
-  // cookieCount = randomCustomer * 6.3,
-
-  
-
-  // for(var i = 0; i < storetimes.length; i++) {
-  //   var liElement = document.createElement('li'),
-  //   liElement.textContent = `At ${storeTimes[i]}, ${cookieCount} cookies were sold.`;
-  //   ulElement.appendChild(liElement);
-  // },
-   
-  // cookieTotal++
+Store.prototype.randomCustomer= function () {
+  var min= Math.ceil(this.minCust);
+  var max= Math.floor(this.maxCust);
+  return Math.floor( Math.random() * (max-min) ) + min;
 };
+
+Store.prototype.hourCust= function () {
+  return Math.round( this.randomCustomer() * this.aveCust) ;
+};
+
+
+
+var pikePlace = new Store(23, 65, 6.3);
+pikePlace.hourCust();
+
+console.log(pikePlace);
+
+
+// cookieList: function() {
+//   var ulElement = document.getElementById('pike-place-cookies');
+//   var cookieTotal = 0;
+//   for(var i = 0; i < storetimes.length; i++) {
+//     var liElement = document.createElement('li'),
+//     var randomNum = this.hourCust();
+
+//     cookieTotal += randomNum;
+
+//     liElement.textContent = `At ${storeTimes[i]}, ${randomNum} cookies were sold.`;
+//     ulElement.appendChild(liElement);
+//   }
+
+//   var totalEl = document.createElement('li');
+//   totalEl.textContent =` Daily total: ${cookieTotal}`;
+//   ulElement.appendChile(totalEl);
+
+// }
+
+// cookieCount = randomCustomer * 6.3,
+
+
+
+// for(var i = 0; i < storetimes.length; i++) {
+//   var liElement = document.createElement('li'),
+//   liElement.textContent = `At ${storeTimes[i]}, ${cookieCount} cookies were sold.`;
+//   ulElement.appendChild(liElement);
+// },
+
+// cookieTotal++
+//};
 
 var seaTac = {
   minCust: 3,
@@ -114,7 +128,7 @@ var seaTac = {
     var min= Math.ceil(this.minCust);
     var max= Math.floor(this.maxCust);
 
-    return Math.floor(Math.random() * (max-min)) + min;    
+    return Math.floor(Math.random() * (max-min)) + min;
   }
 
 };
@@ -126,7 +140,7 @@ var seaCenter = {
   randomCustomer: function() {
     var min= Math.ceil(this.minCust);
     var max= Math.floor(this.maxCust);
-    return Math.floor(Math.random() * (max-min)) + min;    
+    return Math.floor(Math.random() * (max-min)) + min;
   }
 
 };
@@ -139,7 +153,7 @@ var capHill = {
   randomCustomer: function() {
     var min= Math.ceil(this.minCust);
     var max= Math.floor(this.maxCust);
-    return Math.floor(Math.random() * (max-min)) + min;    
+    return Math.floor(Math.random() * (max-min)) + min;
   }
 
 };
@@ -152,7 +166,7 @@ var alkiStore = {
   randomCustomer: function() {
     var min= Math.ceil(this.minCust);
     var max= Math.floor(this.maxCust);
-    return Math.floor(Math.random() * (max-min)) + min;    
+    return Math.floor(Math.random() * (max-min)) + min;
   }
 
 };

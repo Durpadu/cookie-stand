@@ -57,17 +57,19 @@
 
 // var storetimes = [ '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm' ];
 
-// var storeLocation= [];
 
 // var cookieTotal = 0;
+
+var allStoreLocations= [];
+
 
 function Store (minCust, maxCust, aveCust) {
 
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.aveCust = aveCust;
-  // Store.allStoreLocations.push(this);
-
+  this.cookieTotal= [];
+  allStoreLocations.push(this);
 }
 
 Store.prototype.randomCustomer= function () {
@@ -76,16 +78,33 @@ Store.prototype.randomCustomer= function () {
   return Math.floor( Math.random() * (max-min) ) + min;
 };
 
-Store.prototype.hourCust= function () {
+Store.prototype.hourCookie= function () {
+  for(var x = 0; x <)
   return Math.round( this.randomCustomer() * this.aveCust) ;
 };
 
 
 
 var pikePlace = new Store(23, 65, 6.3);
-pikePlace.hourCust();
-
+pikePlace.hourCookie();
 console.log(pikePlace);
+
+var seaTac = new Store(3, 24, 1.2);
+seaTac.hourCookie();
+console.log(seaTac);
+
+var seaCenter = new Store(11, 38, 3.7);
+seaCenter.hourCookie();
+console.log(seaCenter);
+
+var capHill = new Store(20, 38, 2.3);
+capHill.hourCookie();
+console.log(capHill);
+
+var alkiStore = new Store(2, 16, 4.6);
+alkiStore.hourCookie();
+console.log(alkiStore);
+
 
 
 // cookieList: function() {
@@ -120,56 +139,56 @@ console.log(pikePlace);
 // cookieTotal++
 //};
 
-var seaTac = {
-  minCust: 3,
-  maxCust: 24,
+// var seaTac = {
+//   minCust: 3,
+//   maxCust: 24,
 
-  randomCustomer: function() {
-    var min= Math.ceil(this.minCust);
-    var max= Math.floor(this.maxCust);
+//   randomCustomer: function() {
+//     var min= Math.ceil(this.minCust);
+//     var max= Math.floor(this.maxCust);
 
-    return Math.floor(Math.random() * (max-min)) + min;
-  }
+//     return Math.floor(Math.random() * (max-min)) + min;
+//   }
 
-};
+// };
 
-var seaCenter = {
-  minCust: 11,
-  maxCust: 38,
+// var seaCenter = {
+//   minCust: 11,
+//   maxCust: 38,
 
-  randomCustomer: function() {
-    var min= Math.ceil(this.minCust);
-    var max= Math.floor(this.maxCust);
-    return Math.floor(Math.random() * (max-min)) + min;
-  }
+//   randomCustomer: function() {
+//     var min= Math.ceil(this.minCust);
+//     var max= Math.floor(this.maxCust);
+//     return Math.floor(Math.random() * (max-min)) + min;
+//   }
 
-};
-
-
-var capHill = {
-  minCust: 20,
-  maxCust: 38,
-
-  randomCustomer: function() {
-    var min= Math.ceil(this.minCust);
-    var max= Math.floor(this.maxCust);
-    return Math.floor(Math.random() * (max-min)) + min;
-  }
-
-};
+// };
 
 
-var alkiStore = {
-  minCust: 2,
-  maxCust: 16,
+// var capHill = {
+//   minCust: 20,
+//   maxCust: 38,
 
-  randomCustomer: function() {
-    var min= Math.ceil(this.minCust);
-    var max= Math.floor(this.maxCust);
-    return Math.floor(Math.random() * (max-min)) + min;
-  }
+//   randomCustomer: function() {
+//     var min= Math.ceil(this.minCust);
+//     var max= Math.floor(this.maxCust);
+//     return Math.floor(Math.random() * (max-min)) + min;
+//   }
 
-};
+// };
+
+
+// var alkiStore = {
+//   minCust: 2,
+//   maxCust: 16,
+
+//   randomCustomer: function() {
+//     var min= Math.ceil(this.minCust);
+//     var max= Math.floor(this.maxCust);
+//     return Math.floor(Math.random() * (max-min)) + min;
+//   }
+
+// };
 
 // HTML as an object literam aka the DOM:
 // html {

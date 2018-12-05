@@ -55,10 +55,10 @@
 
 
 
-// var storetimes = [ '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm' ];
+var storeTimes = [ '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm' ];
 
 
-// var cookieTotal = 0;
+var cookieTotal = [];
 
 var allStoreLocations= [];
 
@@ -79,7 +79,9 @@ Store.prototype.randomCustomer= function () {
 };
 
 Store.prototype.hourCookie= function () {
-  for(var x = 0; x <)
+  for(var x = 0; x < storeTimes.length; x++) {
+    cookieTotal.push();
+  }
   return Math.round( this.randomCustomer() * this.aveCust) ;
 };
 

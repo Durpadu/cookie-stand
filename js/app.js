@@ -54,108 +54,160 @@
 // twoThousandSeventeen.render();
 
 
+var storeTable= document.getElementById('stores');
 
-var storetimes = [ '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm' ];
+var storeTimes = [ '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm' ];
 
-var cookieTotal = 0;
+var cookieTotal = [];
 
-var pikePlace = {
-  minCust: 23,
-  maxCust: 65,
-  aveCookieCust: 6.3,
+function Store (minCust, maxCust, aveCust) {
 
-  randomCustomer: function() {
-    var min= Math.ceil(this.minCust);
-    var max= Math.floor(this.maxCust);
-    return Math.floor( Math.random() * (max-min) ) + min;
-  },
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.aveCust = aveCust;
+  this.cookieTotal= [];
+  allStoreLocations.push(this);
+}
 
-  hourCust: function() {
-    return Math.round( this.randomCustomer() * this.aveCookieCust) ;
-  }
-
-  cookieList: function() {
-    var ulElement = document.getElementById('pike-place-cookies');
-    var cookieTotal = 0;
-    for(var i = 0; i < storetimes.length; i++) {
-      var liElement = document.createElement('li'),
-      var randomNum = this.hourCust();
-
-      cookieTotal += randomNum;
-
-      liElement.textContent = `At ${storeTimes[i]}, ${randomNum} cookies were sold.`;
-      ulElement.appendChild(liElement);
-    }
-
-    var totalEl = document.createElement('li');
-    totalEl.textContent =` Daily total: ${cookieTotal}`;
-    ulElement.appendChile(totalEl);
-
-  }
-
-  // cookieCount = randomCustomer * 6.3,
-
-  
-
-  // for(var i = 0; i < storetimes.length; i++) {
-  //   var liElement = document.createElement('li'),
-  //   liElement.textContent = `At ${storeTimes[i]}, ${cookieCount} cookies were sold.`;
-  //   ulElement.appendChild(liElement);
-  // },
-   
-  // cookieTotal++
+Store.prototype.randomCustomer= function () {
+  var min= Math.ceil(this.minCust);
+  var max= Math.floor(this.maxCust);
+  return Math.floor( Math.random() * (max-min) ) + min;
 };
 
-var seaTac = {
-  minCust: 3,
-  maxCust: 24,
-
-  randomCustomer: function() {
-    var min= Math.ceil(this.minCust);
-    var max= Math.floor(this.maxCust);
-
-    return Math.floor(Math.random() * (max-min)) + min;    
+Store.prototype.hourCookie= function () {
+  for(var x = 0; x < storeTimes.length; x++) {
+    cookieTotal.push(this);
   }
-
+  return Math.round( this.randomCustomer() * this.aveCust) ;
 };
 
-var seaCenter = {
-  minCust: 11,
-  maxCust: 38,
+Store.allStores= [];
 
-  randomCustomer: function() {
-    var min= Math.ceil(this.minCust);
-    var max= Math.floor(this.maxCust);
-    return Math.floor(Math.random() * (max-min)) + min;    
-  }
+Store.prototype.render = function() {
+  var trEl= document.createElement('tr');
 
+  var tdEl= document.createElement('td');
+
+  //tdEl.textContent =
 };
 
+Store.renderHeader = function(){
+  var headerRow = document.createElement('tr');
 
-var capHill = {
-  minCust: 20,
-  maxCust: 38,
+  var headings = storeTimes.length;
 
-  randomCustomer: function() {
-    var min= Math.ceil(this.minCust);
-    var max= Math.floor(this.maxCust);
-    return Math.floor(Math.random() * (max-min)) + min;    
+  for(var i = 0; i < storeTimes.length; i++) {
+    var thEl = document.createElement('th');
+    thEl.textContent = headings[i];
+    headerRow.appendChild(thEl);
   }
-
 };
 
+var pikePlace = new Store(23, 65, 6.3);
+pikePlace.hourCookie();
+console.log(pikePlace);
 
-var alkiStore = {
-  minCust: 2,
-  maxCust: 16,
+var seaTac = new Store(3, 24, 1.2);
+seaTac.hourCookie();
+console.log(seaTac);
 
-  randomCustomer: function() {
-    var min= Math.ceil(this.minCust);
-    var max= Math.floor(this.maxCust);
-    return Math.floor(Math.random() * (max-min)) + min;    
-  }
+var seaCenter = new Store(11, 38, 3.7);
+seaCenter.hourCookie();
+console.log(seaCenter);
 
-};
+var capHill = new Store(20, 38, 2.3);
+capHill.hourCookie();
+console.log(capHill);
+
+var alkiStore = new Store(2, 16, 4.6);
+alkiStore.hourCookie();
+console.log(alkiStore);
+
+
+
+// cookieList: function() {
+//   var ulElement = document.getElementById('pike-place-cookies');
+//   var cookieTotal = 0;
+//   for(var i = 0; i < storetimes.length; i++) {
+//     var liElement = document.createElement('li'),
+//     var randomNum = this.hourCust();
+
+//     cookieTotal += randomNum;
+
+//     liElement.textContent = `At ${storeTimes[i]}, ${randomNum} cookies were sold.`;
+//     ulElement.appendChild(liElement);
+//   }
+
+//   var totalEl = document.createElement('li');
+//   totalEl.textContent =` Daily total: ${cookieTotal}`;
+//   ulElement.appendChile(totalEl);
+
+// }
+
+// cookieCount = randomCustomer * 6.3,
+
+
+
+// for(var i = 0; i < storetimes.length; i++) {
+//   var liElement = document.createElement('li'),
+//   liElement.textContent = `At ${storeTimes[i]}, ${cookieCount} cookies were sold.`;
+//   ulElement.appendChild(liElement);
+// },
+
+// cookieTotal++
+//};
+
+// var seaTac = {
+//   minCust: 3,
+//   maxCust: 24,
+
+//   randomCustomer: function() {
+//     var min= Math.ceil(this.minCust);
+//     var max= Math.floor(this.maxCust);
+
+//     return Math.floor(Math.random() * (max-min)) + min;
+//   }
+
+// };
+
+// var seaCenter = {
+//   minCust: 11,
+//   maxCust: 38,
+
+//   randomCustomer: function() {
+//     var min= Math.ceil(this.minCust);
+//     var max= Math.floor(this.maxCust);
+//     return Math.floor(Math.random() * (max-min)) + min;
+//   }
+
+// };
+
+
+// var capHill = {
+//   minCust: 20,
+//   maxCust: 38,
+
+//   randomCustomer: function() {
+//     var min= Math.ceil(this.minCust);
+//     var max= Math.floor(this.maxCust);
+//     return Math.floor(Math.random() * (max-min)) + min;
+//   }
+
+// };
+
+
+// var alkiStore = {
+//   minCust: 2,
+//   maxCust: 16,
+
+//   randomCustomer: function() {
+//     var min= Math.ceil(this.minCust);
+//     var max= Math.floor(this.maxCust);
+//     return Math.floor(Math.random() * (max-min)) + min;
+//   }
+
+// };
 
 // HTML as an object literam aka the DOM:
 // html {

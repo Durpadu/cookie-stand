@@ -54,14 +54,11 @@
 // twoThousandSeventeen.render();
 
 
+var storeTable= document.getElementById('stores');
 
 var storeTimes = [ '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm' ];
 
-
 var cookieTotal = [];
-
-var allStoreLocations= [];
-
 
 function Store (minCust, maxCust, aveCust) {
 
@@ -80,12 +77,32 @@ Store.prototype.randomCustomer= function () {
 
 Store.prototype.hourCookie= function () {
   for(var x = 0; x < storeTimes.length; x++) {
-    cookieTotal.push();
+    cookieTotal.push(this);
   }
   return Math.round( this.randomCustomer() * this.aveCust) ;
 };
 
+Store.allStores= [];
 
+Store.prototype.render = function() {
+  var trEl= document.createElement('tr');
+
+  var tdEl= document.createElement('td');
+
+  //tdEl.textContent =
+};
+
+Store.renderHeader = function(){
+  var headerRow = document.createElement('tr');
+
+  var headings = storeTimes.length;
+
+  for(var i = 0; i < storeTimes.length; i++) {
+    var thEl = document.createElement('th');
+    thEl.textContent = headings[i];
+    headerRow.appendChild(thEl);
+  }
+};
 
 var pikePlace = new Store(23, 65, 6.3);
 pikePlace.hourCookie();
